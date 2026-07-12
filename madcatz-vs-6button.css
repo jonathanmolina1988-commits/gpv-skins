@@ -1,0 +1,127 @@
+/*
+  Mad Catz FightStick V.S. — 6 Button Skin
+  For https://gamepadviewer.com/
+
+  HOW TO USE:
+  1. Host this file somewhere public that ends in .css
+     (GitHub Gist raw link, GitHub Pages, jsDelivr, etc.)
+  2. Paste that raw URL into GamepadViewer's "Custom CSS URL" field
+     (this uses the css= parameter, i.e. a full skin replacement).
+  3. Only the first 6 buttons are shown/styled:
+       Top row:    LP  MP  HP
+       Bottom row: LK  MK  HK
+     Everything else (stick, d-pad, start/select, extra buttons)
+     is hidden.
+*/
+
+.controller.custom {
+  position: relative;
+  width: 380px;
+  height: 220px;
+  background: linear-gradient(160deg, #0d0d0d 0%, #1b1b1b 55%, #0d0d0d 100%);
+  border: 3px solid #b8bfc4;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 2px #000,
+    0 10px 26px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(200, 0, 0, 0.15);
+  font-family: "Arial Narrow", Arial, sans-serif;
+}
+
+.controller.custom::before {
+  content: "V . S .";
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  color: #e2222c;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px rgba(226, 34, 44, 0.8);
+}
+
+.controller.custom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #8c0d14, #e2222c, #8c0d14);
+  border-radius: 0 0 10px 10px;
+}
+
+/* Hide everything by default (stick, dpad, start/select, unused buttons) */
+.controller.custom * {
+  display: none;
+}
+
+/* Show + style only the 6 buttons we want */
+.custom .x,
+.custom .y,
+.custom .a,
+.custom .b,
+.custom .bumper.right,
+.custom .trigger-button.right {
+  display: block;
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff4b52, #b3121c 60%, #6e0009 100%);
+  border: 3px solid #cfd4d8;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), inset 0 -4px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.05s ease;
+}
+
+.custom .x::after,
+.custom .y::after,
+.custom .a::after,
+.custom .b::after,
+.custom .bumper.right::after,
+.custom .trigger-button.right::after {
+  display: block;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f2f2f2;
+  font-weight: 700;
+  font-size: 13px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Top row: LP MP HP */
+.custom .x { top: 62px; left: 18px; }
+.custom .x::after { content: "LP"; }
+
+.custom .y { top: 46px; left: 96px; }
+.custom .y::after { content: "MP"; }
+
+.custom .bumper.right { top: 36px; left: 174px; }
+.custom .bumper.right::after { content: "HP"; }
+
+/* Bottom row: LK MK HK */
+.custom .a { top: 136px; left: 34px; }
+.custom .a::after { content: "LK"; }
+
+.custom .b { top: 120px; left: 112px; }
+.custom .b::after { content: "MK"; }
+
+.custom .trigger-button.right { top: 110px; left: 190px; }
+.custom .trigger-button.right::after { content: "HK"; }
+
+/* Pressed state */
+.custom .button.pressed,
+.custom .bumper.right.pressed,
+.custom .trigger-button.right.pressed {
+  transform: scale(0.92);
+  background: radial-gradient(circle at 35% 30%, #ff8a8f, #e2222c 55%, #8c0d14 100%);
+  box-shadow: 0 0 16px 4px rgba(255, 60, 60, 0.9), inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.controller.custom.disconnected {
+  opacity: 0.4;
+}
